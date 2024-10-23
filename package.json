@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "npx tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify",
+    "watch": "npx tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",
     "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist",
+    "deploy": "gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
