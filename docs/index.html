@@ -66,20 +66,75 @@
         .mobile-menu.open {
             max-height: 300px; /* Set this to a value large enough for the menu items */
         }
+
+        .nav-link {
+            position: relative;
+            padding-bottom: 2px;
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: #6AAB4D; /* Green color for underline */
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #6AAB4D; /* Change text color on hover */
+        }
+
+        .nav-link:hover::after {
+            width: 100%; /* Full width underline on hover */
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            /* background-color: #2b3a5b;  */
+        }
+
+       /* Scroll-to-Top Button */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    color: #2b3a5b; /* Dark color for the icon */
+    width: 50px; /* Set width */
+    height: 50px; /* Set height */
+    border-radius: 50%; /* Make it fully circular */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Only shadow effect */
+    cursor: pointer;
+    display: none;
+    transition: opacity 0.3s ease-in-out;
+    font-size: 24px;
+    text-align: center;
+    line-height: 50px; /* Center align icon vertically */
+}
+
+#scrollTopBtn:hover {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
+}
     </style>
 </head>
 
 <body class="font-sans">
     <!-- Header (Navbar) -->
-    <header class="bg-primary py-4">
+    <header class="bg-primary sticky-header py-4">
         <div class="container mx-auto flex flex-wrap items-center justify-between px-4 md:px-0">
             <a href="#" class="text-2xl font-bold text-green">Sinagro</a>
             <nav class="hidden md:flex space-x-4">
-                <a href="#home" class="text-white hover:text-green">Home</a>
-                <a href="#about" class="text-white hover:text-green">About</a>
-                <a href="#services" class="text-white hover:text-green">Services</a>
-                <a href="#blog" class="text-white hover:text-green">Blog</a>
-                <a href="#contact" class="text-white hover:text-green">Contact</a>
+                <a href="#home" class="text-white nav-link hover:text-green">Home</a>
+                <a href="#about" class="text-white nav-link hover:text-green">About</a>
+                <a href="#services" class="text-white nav-link hover:text-green">Services</a>
+                <a href="#blog" class="text-white nav-link hover:text-green">Blog</a>
+                <a href="#contact" class="text-white nav-link hover:text-green">Contact</a>
             </nav>
             <!-- <div class="md:hidden">
                 <button class="text-white">Menu</button>
@@ -221,6 +276,8 @@
         </div>
     </footer>
 
+    <div id="scrollTopBtn" title="Scroll to top">↑</div>
+
     <script>
       const menuButton = document.getElementById("menuButton");
       const mobileNav = document.getElementById("mobileNav");
@@ -228,6 +285,21 @@
       menuButton.addEventListener("click", () => {
           mobileNav.classList.toggle("open");
       });
+
+       window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.style.display = "block";
+            } else {
+                scrollTopBtn.style.display = "none";
+            }
+        });
+
+        scrollTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
   </script>
 
 </body>
