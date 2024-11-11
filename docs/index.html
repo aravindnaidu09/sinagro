@@ -2,305 +2,410 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sinagro</title>
-    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400&display=swap" rel="stylesheet">
-    <link href="./dist/output.css" rel="stylesheet">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sinagro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400&display=swap" rel="stylesheet">
+  <link href="./dist/output.css" rel="stylesheet">
+  <link rel="icon" href="./assets/logo-no-bg.png" type="image/x-icon">
 
-    <style>
-      /* Flip Animation */
-      .flip-card {
-        perspective: 1000px;
-      }
+  <style>
+    .flip-card {
+      perspective: 1000px;
+    }
 
-      .flip-card-inner {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        transition: transform 0.6s;
-        transform-style: preserve-3d;
-      }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
 
-      .flip-card:hover .flip-card-inner {
-        transform: rotateY(180deg);
-      }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
 
-      .flip-card-front,
-      .flip-card-back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-        border-radius: 0.5rem;
-      }
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 0.5rem;
+    }
 
-      .flip-card-back {
-        background-color: #D1D4A2;
-        color: #706B43;
-        transform: rotateY(180deg);
-      }
+    .flip-card-back {
+      background-color: #D1D4A2;
+      color: #706B43;
+      transform: rotateY(180deg);
+    }
 
-      /* Green Color Styles */
-      .text-green {
-        color: #6AAB4D;
-      }
+    .text-green {
+      color: #6AAB4D;
+    }
 
-      .bg-green {
-        background-color: #6AAB4D;
-      }
+    .bg-green {
+      background-color: #6AAB4D;
+    }
 
-      /* .border-green {
+    /* .border-green {
         border-color: #6AAB4D;
       } */
 
-       /* Mobile Menu Transition */
-       .mobile-menu {
-            transition: max-height 0.3s ease-in-out;
-            overflow: hidden;
-            max-height: 0;
-        }
+    .mobile-menu {
+      transition: max-height 0.3s ease-in-out;
+      overflow: hidden;
+      max-height: 0;
+    }
 
-        .mobile-menu.open {
-            max-height: 300px; /* Set this to a value large enough for the menu items */
-        }
+    .mobile-menu.open {
+      max-height: 300px;
+    }
 
-        .nav-link {
-            position: relative;
-            padding-bottom: 2px;
-            color: #ffffff;
-            transition: color 0.3s ease;
-        }
+    .nav-link {
+      color: black;
+      /* Black text color */
+      font-weight: normal;
+      transition: color 0.3s ease, font-weight 0.3s ease;
+      position: relative;
+      padding-bottom: 2px;
+    }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 0;
-            height: 2px;
-            background-color: #6AAB4D; /* Green color for underline */
-            transition: width 0.3s ease;
-        }
+    /* Underline Animation */
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: #6AAB4D;
+      transition: width 0.3s ease;
+    }
 
-        .nav-link:hover {
-            color: #6AAB4D; /* Change text color on hover */
-        }
+    .nav-link:hover {
+      color: #6AAB4D;
+      /* Change text color on hover */
+    }
 
-        .nav-link:hover::after {
-            width: 100%; /* Full width underline on hover */
-        }
+    .nav-link:hover::after {
+      width: 100%;
+      /* Full width underline on hover */
+    }
 
-        .sticky-header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            /* background-color: #2b3a5b;  */
-        }
+    /* Active Link Style */
+    .nav-link.active {
+      font-weight: bold;
+      /* Make selected link bold */
+      color: #6AAB4D;
+      /* Set selected link color */
+    }
 
-       /* Scroll-to-Top Button */
-#scrollTopBtn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    color: #2b3a5b; /* Dark color for the icon */
-    width: 50px; /* Set width */
-    height: 50px; /* Set height */
-    border-radius: 50%; /* Make it fully circular */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Only shadow effect */
-    cursor: pointer;
-    display: none;
-    transition: opacity 0.3s ease-in-out;
-    font-size: 24px;
-    text-align: center;
-    line-height: 50px; /* Center align icon vertically */
-}
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: white;
+      /* White background */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      /* Add a subtle shadow for depth */
+    }
 
-#scrollTopBtn:hover {
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
-}
-    </style>
+    /* Fade-in Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .about-card {
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .about-card:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+
+    .about-card:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .about-card:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      color: #2b3a5b;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      display: none;
+      transition: opacity 0.3s ease-in-out;
+      font-size: 24px;
+      text-align: center;
+      line-height: 50px;
+    }
+
+    #scrollTopBtn:hover {
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+    }
+  </style>
 </head>
 
 <body class="font-sans">
-    <!-- Header (Navbar) -->
-    <header class="bg-primary sticky-header py-4">
-        <div class="container mx-auto flex flex-wrap items-center justify-between px-4 md:px-0">
-            <a href="#" class="text-2xl font-bold text-green">Sinagro</a>
-            <nav class="hidden md:flex space-x-4">
-                <a href="#home" class="text-white nav-link hover:text-green">Home</a>
-                <a href="#about" class="text-white nav-link hover:text-green">About</a>
-                <a href="#services" class="text-white nav-link hover:text-green">Services</a>
-                <a href="#blog" class="text-white nav-link hover:text-green">Blog</a>
-                <a href="#contact" class="text-white nav-link hover:text-green">Contact</a>
-            </nav>
-            <!-- <div class="md:hidden">
-                <button class="text-white">Menu</button>
-            </div> -->
+  <!-- Header (Navbar) -->
+  <!-- Header (Navbar) with Sticky Class -->
+  <header class="sticky-header py-4">
+    <div class="container mx-auto flex flex-wrap items-center justify-between px-4 md:px-0">
+      <a href="#" class="text-2xl font-bold text-green">Sinagro</a>
+      <nav class="hidden md:flex space-x-4">
+        <a href="#home" class="nav-link" onclick="setActiveLink(this)">Home</a>
+        <a href="#about" class="nav-link" onclick="setActiveLink(this)">About</a>
+        <a href="#services" class="nav-link" onclick="setActiveLink(this)">Services</a>
+        <a href="#blog" class="nav-link" onclick="setActiveLink(this)">Blog</a>
+        <a href="#contact" class="nav-link" onclick="setActiveLink(this)">Contact</a>
+      </nav>
 
-            <!-- Hamburger Icon for Mobile Menu -->
-            <button id="menuButton" class="md:hidden text-white focus:outline-none">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-          </button>
+      <!-- Hamburger Icon for Mobile Menu -->
+      <button id="menuButton" class="md:hidden text-black focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileNav" class="mobile-menu hidden md:hidden bg-white text-black">
+      <a href="#home" class="block py-2 px-4 hover:bg-green" onclick="setActiveLink(this)">Home</a>
+      <a href="#about" class="block py-2 px-4 hover:bg-green" onclick="setActiveLink(this)">About</a>
+      <a href="#services" class="block py-2 px-4 hover:bg-green" onclick="setActiveLink(this)">Services</a>
+      <a href="#blog" class="block py-2 px-4 hover:bg-green" onclick="setActiveLink(this)">Blog</a>
+      <a href="#contact" class="block py-2 px-4 hover:bg-green" onclick="setActiveLink(this)">Contact</a>
+    </div>
+  </header>
+  <!-- Hero Section -->
+  <section id="home"
+    class="relative bg-cover bg-center h-screen flex flex-col justify-center items-center text-center px-4 text-white"
+    style="background-image: url('');">
+    <h1 class="text-4xl sm:text-5xl font-bold text-green">Welcome to Sinagro</h1>
+    <p class="text-lg mt-4">Innovative solutions for modern agriculture</p>
+    <a href="#services" class="mt-6 bg-green text-white py-2 px-6 rounded-full hover:bg-opacity-75">Explore Services</a>
+  </section>
+
+  <!-- About Section -->
+  <section id="about-sinagro" class="py-16 bg-gray-100">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold text-green mb-8">About Sinagro</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Our Team Section -->
+        <div
+          class="about-card transform transition duration-500 hover:scale-105 hover:shadow-lg bg-white rounded-lg overflow-hidden">
+          <img src="./assets/sinagro-team.png" alt="Our Team" class="w-full h-56 object-cover">
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold text-green mb-4">Our Team</h3>
+            <p class="text-gray-600">Our team at Sinagro is made up of experienced and knowledgeable professionals who
+              are passionate about agriculture. We work together to provide exceptional service to our clients.</p>
+          </div>
         </div>
 
-        <div id="mobileNav" class="mobile-menu hidden md:hidden bg-primary text-white">
-          <a href="#home" class="block py-2 px-4 hover:bg-green">Home</a>
-          <a href="#about" class="block py-2 px-4 hover:bg-green">About</a>
-          <a href="#services" class="block py-2 px-4 hover:bg-green">Services</a>
-          <a href="#blog" class="block py-2 px-4 hover:bg-green">Blog</a>
-          <a href="#contact" class="block py-2 px-4 hover:bg-green">Contact</a>
+        <!-- Our Mission Section -->
+        <div
+          class="about-card transform transition duration-500 hover:scale-105 hover:shadow-lg bg-white rounded-lg overflow-hidden">
+          <img src="./assets/sinagro-mission.png" alt="Our Mission" class="w-full h-56 object-cover">
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold text-green mb-4">Our Mission</h3>
+            <p class="text-gray-600">At Sinagro, we are committed to providing high-quality agricultural services that
+              help our clients succeed. We believe in sustainable farming practices and strive to be good stewards of
+              the land.</p>
+          </div>
+        </div>
+
+        <!-- Our Story Section -->
+        <div
+          class="about-card transform transition duration-500 hover:scale-105 hover:shadow-lg bg-white rounded-lg overflow-hidden">
+          <img src="./assets/sinagro-story.png" alt="Our Story" class="w-full h-56 object-cover">
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold text-green mb-4">Our Story</h3>
+            <p class="text-gray-600">Founded in 2022, Sinagro started as a small family-owned farm. Over the years, we
+              have expanded our services and now offer a wide range of agricultural solutions to businesses in the area.
+            </p>
+          </div>
+        </div>
       </div>
-    </header>
+    </div>
+  </section>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative bg-cover bg-center h-screen flex flex-col justify-center items-center text-center px-4 text-white" style="background-image: url('');">
-        <h1 class="text-4xl sm:text-5xl font-bold text-green">Welcome to Sinagro</h1>
-        <p class="text-lg mt-4">Innovative solutions for modern agriculture</p>
-        <a href="#services" class="mt-6 bg-green text-white py-2 px-6 rounded-full hover:bg-opacity-75">Explore Services</a>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-gray-100 px-4">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold text-green">About Sinagro</h2>
-            <p class="mt-4 text-lg">We provide innovative agricultural services and solutions to empower farmers.</p>
-        </div>
-    </section>
+  <!-- Services Section with Flip Animation -->
+  <section id="services" class="py-16 bg-primary text-secondary px-4">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold text-white">Our Services</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
 
-    <!-- Services Section with Flip Animation -->
-    <section id="services" class="py-16 bg-primary text-secondary px-4">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold text-white">Our Services</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
-                
-                <!-- Flip Card 1 -->
-                <div class="flip-card border-green border-2">
-                    <div class="flip-card-inner bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flip-card-front flex flex-col items-center justify-center p-6">
-                            <img src="" alt="Consulting" class="h-16 mx-auto">
-                            <h3 class="text-xl font-semibold mt-4 text-green">Consulting</h3>
-                        </div>
-                        <div class="flip-card-back flex flex-col items-center justify-center p-6">
-                            <p>Expert agricultural advice to improve your yield.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Flip Card 2 -->
-                <div class="flip-card border-green border-2">
-                    <div class="flip-card-inner bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flip-card-front flex flex-col items-center justify-center p-6">
-                            <img src="" alt="Equipment Rental" class="h-16 mx-auto">
-                            <h3 class="text-xl font-semibold mt-4 text-green">Equipment Rental</h3>
-                        </div>
-                        <div class="flip-card-back flex flex-col items-center justify-center p-6">
-                            <p>Affordable, modern equipment for your farming needs.</p>
-                        </div>
-                    </div>
-                </div>
+        <!-- Flip Card 1 -->
+        <div class="flip-card border-green border-2">
+          <div class="flip-card-inner bg-white p-6 rounded-lg shadow-lg">
+            <div class="flip-card-front flex flex-col items-center justify-center p-6">
+              <img src="" alt="Consulting" class="h-16 mx-auto">
+              <h3 class="text-xl font-semibold mt-4 text-green">Consulting</h3>
             </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section with Flip Animation -->
-    <section id="testimonials" class="py-16 bg-gray-50 px-4">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold text-green">What Our Farmers Say</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-                <div class="flip-card border-green border-2">
-                    <div class="flip-card-inner bg-white p-6 rounded-lg shadow-lg">
-                        <div class="flip-card-front flex flex-col items-center justify-center p-6">
-                            <p class="italic text-green">"Sinagro's consulting services helped us increase our yield by 30%!"</p>
-                            <h3 class="mt-4 font-bold">- Farmer John</h3>
-                        </div>
-                        <div class="flip-card-back flex flex-col items-center justify-center p-6">
-                            <p class="italic">More great feedback from our valued farmers.</p>
-                            <h3 class="mt-4 font-bold">- Sinagro</h3>
-                        </div>
-                    </div>
-                </div>
+            <div class="flip-card-back flex flex-col items-center justify-center p-6">
+              <p>Expert agricultural advice to improve your yield.</p>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Blog Section with Flip Animation -->
-    <section id="blog" class="py-16 bg-white px-4">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold text-green">Latest News & Articles</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-                <div class="flip-card border-green border-2">
-                    <div class="flip-card-inner bg-gray-100 p-6 rounded-lg shadow-lg">
-                        <div class="flip-card-front flex flex-col items-center justify-center p-6">
-                            <img src="" alt="Article" class="rounded-lg">
-                            <h3 class="mt-4 text-xl font-semibold text-green">How to Optimize Your Crop Yield</h3>
-                            <p class="mt-2 text-gray-600">Learn the best techniques...</p>
-                        </div>
-                        <div class="flip-card-back flex flex-col items-center justify-center p-6">
-                            <p>Explore expert tips to increase crop productivity and efficiency on your farm.</p>
-                            <a href="#" class="mt-4 inline-block text-secondary">Read more</a>
-                        </div>
-                    </div>
-                </div>
+        <!-- Flip Card 2 -->
+        <div class="flip-card border-green border-2">
+          <div class="flip-card-inner bg-white p-6 rounded-lg shadow-lg">
+            <div class="flip-card-front flex flex-col items-center justify-center p-6">
+              <img src="" alt="Equipment Rental" class="h-16 mx-auto">
+              <h3 class="text-xl font-semibold mt-4 text-green">Equipment Rental</h3>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-primary text-white px-4">
-        <div class="container mx-auto text-center">
-            <h2 class="text-3xl font-bold text-green">Get In Touch</h2>
-            <p class="mt-4">We’d love to hear from you. Drop us a message or reach out to us via social media.</p>
-            <form class="mt-8 max-w-lg mx-auto">
-                <input type="text" placeholder="Your Name" class="w-full p-3 rounded-lg mb-4 border-green border-2">
-                <input type="email" placeholder="Your Email" class="w-full p-3 rounded-lg mb-4 border-green border-2">
-                <textarea placeholder="Your Message" class="w-full p-3 rounded-lg mb-4 border-green border-2"></textarea>
-                <button type="submit" class="bg-green text-white py-2 px-4 rounded-full hover:bg-opacity-75">Send Message</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-secondary text-white py-8 px-4">
-        <div class="container mx-auto text-center space-y-4">
-            <p>&copy; 2024 Sinagro. All rights reserved.</p>
-            <div class="flex justify-center space-x-4">
-                <a href="#" class="hover:text-green">Facebook</a>
-                <a href="#" class="hover:text-green">Twitter</a>
-                <a href="#" class="hover:text-green">Instagram</a>
+            <div class="flip-card-back flex flex-col items-center justify-center p-6">
+              <p>Affordable, modern equipment for your farming needs.</p>
             </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <div id="scrollTopBtn" title="Scroll to top">↑</div>
+  <!-- Testimonials Section with Flip Animation -->
+  <section id="testimonials" class="py-16 bg-gray-50 px-4">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold text-green">What Our Farmers Say</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+        <div class="flip-card border-green border-2">
+          <div class="flip-card-inner bg-white p-6 rounded-lg shadow-lg">
+            <div class="flip-card-front flex flex-col items-center justify-center p-6">
+              <p class="italic text-green">"Sinagro's consulting services helped us increase our yield by 30%!"</p>
+              <h3 class="mt-4 font-bold">- Farmer John</h3>
+            </div>
+            <div class="flip-card-back flex flex-col items-center justify-center p-6">
+              <p class="italic">More great feedback from our valued farmers.</p>
+              <h3 class="mt-4 font-bold">- Sinagro</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-      const menuButton = document.getElementById("menuButton");
-      const mobileNav = document.getElementById("mobileNav");
+  <!-- Blog Section with Flip Animation -->
+  <section id="blog" class="py-16 bg-white px-4">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold text-green">Latest News & Articles</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+        <div class="flip-card border-green border-2">
+          <div class="flip-card-inner bg-gray-100 p-6 rounded-lg shadow-lg">
+            <div class="flip-card-front flex flex-col items-center justify-center p-6">
+              <img src="" alt="Article" class="rounded-lg">
+              <h3 class="mt-4 text-xl font-semibold text-green">How to Optimize Your Crop Yield</h3>
+              <p class="mt-2 text-gray-600">Learn the best techniques...</p>
+            </div>
+            <div class="flip-card-back flex flex-col items-center justify-center p-6">
+              <p>Explore expert tips to increase crop productivity and efficiency on your farm.</p>
+              <a href="#" class="mt-4 inline-block text-secondary">Read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      menuButton.addEventListener("click", () => {
-          mobileNav.classList.toggle("open");
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 bg-primary text-white px-4">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold text-green">Get In Touch</h2>
+      <p class="mt-4">We’d love to hear from you. Drop us a message or reach out to us via social media.</p>
+      <form class="mt-8 max-w-lg mx-auto">
+        <input type="text" placeholder="Your Name" class="w-full p-3 rounded-lg mb-4 border-green border-2">
+        <input type="email" placeholder="Your Email" class="w-full p-3 rounded-lg mb-4 border-green border-2">
+        <textarea placeholder="Your Message" class="w-full p-3 rounded-lg mb-4 border-green border-2"></textarea>
+        <button type="submit" class="bg-green text-white py-2 px-4 rounded-full hover:bg-opacity-75">Send
+          Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-secondary text-white py-8 px-4">
+    <div class="container mx-auto text-center space-y-4">
+      <p>&copy; 2024 Sinagro. All rights reserved.</p>
+      <div class="flex justify-center space-x-4">
+        <a href="#" class="hover:text-green">Facebook</a>
+        <a href="#" class="hover:text-green">Twitter</a>
+        <a href="#" class="hover:text-green">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="scrollTopBtn" title="Scroll to top">↑</div>
+
+  <script>
+    // Toggle Mobile Menu
+    const menuButton = document.getElementById("menuButton");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", () => {
+      mobileNav.classList.toggle("show");
+    });
+
+    // Set active link on click
+    function setActiveLink(link) {
+      // Remove active class from all links
+      document.querySelectorAll('.nav-link').forEach(item => item.classList.remove('active'));
+      // Add active class to the clicked link
+      link.classList.add('active');
+    }
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        scrollTopBtn.style.display = "block";
+      } else {
+        scrollTopBtn.style.display = "none";
+      }
+    });
+
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
       });
+    });
 
-       window.addEventListener("scroll", () => {
-            if (window.scrollY > 300) {
-                scrollTopBtn.style.display = "block";
-            } else {
-                scrollTopBtn.style.display = "none";
-            }
-        });
+    const aboutCards = document.querySelectorAll('.about-card');
 
-        scrollTopBtn.addEventListener("click", () => {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
+    function handleScrollAnimation() {
+      aboutCards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (cardTop < windowHeight - 100) {
+          card.classList.add('fade-in');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', handleScrollAnimation);
   </script>
 
 </body>
+
 </html>
