@@ -92,7 +92,6 @@
     .flex {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 1.5rem;
     }
 
@@ -267,24 +266,39 @@
       color: #28A745;
       /* Hover green color for footer links */
     }
+
+    /* Navbar Link Styling */
+    .nav-link {
+      @apply text-black hover:text-green-600 transition-colors;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      @apply transition-all duration-300 ease-in-out;
+    }
   </style>
 </head>
 
 <body class="font-sans">
   <!-- Header (Navbar) -->
-  <!-- Header (Navbar) with Sticky Class -->
-  <header class="sticky-header py-4">
-    <div class="container mx-auto flex flex-wrap items-center justify-between px-4 md:px-0">
-      <a href="#" class="text-2xl font-bold text-green">Sinagro</a>
-      <nav class="hidden md:flex space-x-4">
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="flex justify-between items-center py-4">
+      <!-- Logo (Left Aligned) -->
+      <div>
+        <a href="#" class="text-2xl font-bold text-green-600">Sinagro</a>
+      </div>
+
+      <!-- Desktop Navigation Links (Right Aligned) -->
+      <nav class="hidden md:flex space-x-8">
         <a href="#home" class="nav-link" onclick="setActiveLink(this)">Home</a>
-        <a href="#about" class="nav-link" onclick="setActiveLink(this)">About</a>
-        <a href="#services" class="nav-link" onclick="setActiveLink(this)">Services</a>
-        <a href="#blog" class="nav-link" onclick="setActiveLink(this)">Blog</a>
-        <a href="#contact" class="nav-link" onclick="setActiveLink(this)">Contact</a>
+        <a href="#about" class="nav-link font-medium focus:font-bold active:font-bold" onclick="setActiveLink(this)">About</a>
+        <a href="#services" class="nav-link font-medium focus:font-bold active:font-bold" onclick="setActiveLink(this)">Services</a>
+        <!-- <a href="#blog" class="nav-link">Blog</a> -->
+        <a href="#contact" class="nav-link font-medium focus:font-bold active:font-bold" onclick="setActiveLink(this)">Contact</a>
       </nav>
 
-      <!-- Hamburger Icon for Mobile Menu -->
+
+      <!-- Hamburger Icon for Mobile Menu (Hidden on Desktop) -->
       <button id="menuButton" class="md:hidden text-black focus:outline-none">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -292,15 +306,16 @@
       </button>
     </div>
 
-    <!-- Mobile Menu -->
+    <!-- Mobile Menu (Initially Hidden) -->
     <div id="mobileNav" class="mobile-menu hidden md:hidden bg-white text-black">
-      <a href="#home" class="block py-2 px-4 hover:bg-green" onclick="setActiveLink(this)">Home</a>
-      <a href="#about" class="block py-2 px-4 hover:bg-green" onclick="setActiveLink(this)">About</a>
-      <a href="#services" class="block py-2 px-4 hover:bg-green" onclick="setActiveLink(this)">Services</a>
-      <a href="#blog" class="block py-2 px-4 hover:bg-green" onclick="setActiveLink(this)">Blog</a>
-      <a href="#contact" class="block py-2 px-4 hover:bg-green" onclick="setActiveLink(this)">Contact</a>
+      <a href="#home" class="block py-2 px-4 hover:bg-green-100 hover:text-green-600">Home</a>
+      <a href="#about" class="block py-2 px-4 hover:bg-green-100 hover:text-green-600">About</a>
+      <a href="#services" class="block py-2 px-4 hover:bg-green-100 hover:text-green-600">Services</a>
+      <!-- <a href="#blog" class="block py-2 px-4 hover:bg-green-100 hover:text-green-600">Blog</a> -->
+      <a href="#contact" class="block py-2 px-4 hover:bg-green-100 hover:text-green-600">Contact</a>
     </div>
   </header>
+
   <!-- Hero Section -->
   <section id="home"
     class="relative bg-cover bg-center h-screen flex flex-col justify-center items-center text-center px-4 text-white"
@@ -311,7 +326,7 @@
   </section>
 
   <!-- About Section -->
-  <section id="about-sinagro" class="py-16 bg-gray-100">
+  <section id="about" class="py-16 bg-gray-100">
     <div class="container mx-auto text-center">
       <h2 class="text-3xl font-bold text-green mb-8">About Sinagro</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -491,7 +506,6 @@
   </section>
 
 
-
   <!-- Testimonials Section with Flip Animation -->
   <section id="testimonials" class="py-16 bg-gray-50 px-4">
     <div class="container mx-auto text-center">
@@ -563,7 +577,7 @@
     <div class="container mx-auto max-w-2xl">
       <h2 class="text-3xl font-bold text-green mb-2">Download Sinagro Mobile App</h2>
       <p class="text-gray-700 mb-6">Experience the real farming</p>
-      <a href="YOUR_DOWNLOAD_LINK"
+      <a href="https://play.google.com/store/apps/details?id=com.sinagromobile"
         class="inline-block bg-green text-white py-3 px-10 rounded-full font-bold text-lg hover:bg-opacity-90">Click
         here to Download</a>
     </div>
@@ -630,6 +644,7 @@
     }
 
     window.addEventListener('scroll', handleScrollAnimation);
+
   </script>
 
 </body>
