@@ -10,9 +10,23 @@
   <link rel="icon" href="./assets/logo-no-bg.png" type="image/x-icon">
 
   <style>
-    /* Flip Animation Styles */
-    .flip-card {
+    /* General Styling */
+    #services {
+      background-color: white;
+      padding: 4rem 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Service Card Styling with Flip Animation */
+    .service-card {
       perspective: 1000px;
+      width: 250px;
+      height: 320px;
     }
 
     .flip-card-inner {
@@ -24,7 +38,7 @@
       transform-style: preserve-3d;
     }
 
-    .flip-card:hover .flip-card-inner {
+    .service-card:hover .flip-card-inner {
       transform: rotateY(180deg);
     }
 
@@ -35,31 +49,65 @@
       height: 100%;
       backface-visibility: hidden;
       border-radius: 0.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 1rem;
-      box-sizing: border-box;
     }
 
     .flip-card-front {
-      background-color: #fff;
+      background: #ffffff;
     }
 
     .flip-card-back {
       background-color: #D1D4A2;
       color: #706B43;
       transform: rotateY(180deg);
+      padding: 1rem;
     }
 
-    /* Optional: Add a subtle shadow to each card */
-    .flip-card {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    .service-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 0.5rem;
     }
 
-    /* Hover effect to enhance the visual appearance */
-    .flip-card:hover .flip-card-inner {
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    .service-image {
+      width: 80%;
+      height: 150px;
+      object-fit: cover;
+      margin-top: 1rem;
+      border-radius: 0.25rem;
+    }
+
+    .service-description {
+      color: #555;
+      font-size: 0.875rem;
+      padding: 1rem;
+    }
+
+    /* Flexbox Layout for Cards */
+    .flex {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .service-card {
+        width: 220px;
+        height: 300px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .service-card {
+        width: 260px;
+        height: 320px;
+      }
     }
 
 
@@ -307,133 +355,133 @@
 
 
   <!-- Services Section with Flip Animation -->
-  <section id="services" class="py-16 bg-gray-100 text-center">
+  <section id="services" class="py-16 bg-white text-center">
     <div class="container mx-auto">
-      <h2 class="text-3xl font-bold text-green mb-8">Our Services</h2>
+      <h2 class="text-3xl font-bold text-gray-800 mb-12">Our Services</h2>
       <div class="flex flex-wrap justify-center gap-8">
 
-        <!-- Smart Irrigation Card -->
-        <div class="flip-card w-64 h-80">
+        <!-- Service Card 1: Smart Irrigation -->
+        <div class="service-card">
           <div class="flip-card-inner">
-            <div class="flip-card-front flex flex-col items-center justify-center p-6">
-              <img src="./assets/smart-irrigation.png" alt="Smart Irrigation" class="h-20 mb-4">
-              <h3 class="text-xl font-semibold text-green">Smart Irrigation</h3>
+            <div class="flip-card-front">
+              <h3 class="service-title">Smart Irrigation</h3>
+              <img src="./assets/smart-irrigation.png" alt="Smart Irrigation" class="service-image">
             </div>
-            <div class="flip-card-back flex items-center justify-center p-6">
-              <p class="text-gray-600">IoT-based smart irrigation helps farmers improve crop yields, save water and
-                energy, and make data-driven decisions. Remote control allows for monitoring via smartphone.</p>
+            <div class="flip-card-back">
+              <p class="service-description">IoT-based smart irrigation systems that improve crop yields, save water,
+                and reduce the impact of climate change and drought.</p>
             </div>
           </div>
         </div>
 
-        <!-- Land Geo Tagging Card -->
-        <div class="flip-card w-64 h-80">
+        <!-- Service Card 2: Land Geo Tagging -->
+        <div class="service-card">
           <div class="flip-card-inner">
-            <div class="flip-card-front flex flex-col items-center justify-center p-6">
-              <img src="./assets/geo-tag.png" alt="Land Geo Tagging" class="h-20 mb-4">
-              <h3 class="text-xl font-semibold text-green">Land Geo Tagging</h3>
+            <div class="flip-card-front">
+              <h3 class="service-title">Land Geo Tagging</h3>
+              <img src="./assets/geo-tag.png" alt="Land Geo Tagging" class="service-image">
             </div>
-            <div class="flip-card-back flex items-center justify-center p-6">
-              <p class="text-gray-600">SINAGRO maps module helps farmers in geo-tagging plots to record accurate details
-                about plot sizes, crop type, crop age, soil health, weather forecast, and more.</p>
+            <div class="flip-card-back">
+              <p class="service-description">Geo-tagging for accurate agricultural plot mapping, ensuring accurate plot
+                size and crop details.</p>
             </div>
           </div>
         </div>
 
-        <!-- Soil Health Report Card -->
-        <div class="flip-card w-64 h-80">
+        <!-- Service Card 3: Soil Health Report -->
+        <div class="service-card">
           <div class="flip-card-inner">
-            <div class="flip-card-front flex flex-col items-center justify-center p-6">
-              <img src="./assets/soil-health.png" alt="Soil Health Report" class="h-20 mb-4">
-              <h3 class="text-xl font-semibold text-green">Soil Health Report</h3>
+            <div class="flip-card-front">
+              <h3 class="service-title">Soil Health Report</h3>
+              <img src="./assets/soil-health.png" alt="Soil Health Report" class="service-image">
             </div>
-            <div class="flip-card-back flex items-center justify-center p-6">
-              <p class="text-gray-600">SINAGRO app provides soil health components such as Nitrogen, Potassium,
-                Phosphorus, organic carbon, and soil pH through remote sensing technology.</p>
+            <div class="flip-card-back">
+              <p class="service-description">Provides soil health information like Nitrogen, Potassium, Phosphorus, Soil
+                organic carbon, and Soil pH.</p>
             </div>
           </div>
         </div>
 
-        <!-- Soil Moisture Card -->
-        <div class="flip-card w-64 h-80">
+        <!-- Service Card 4: Soil Moisture -->
+        <div class="service-card">
           <div class="flip-card-inner">
-            <div class="flip-card-front flex flex-col items-center justify-center p-6">
-              <img src="./assets/soil-moisture.png" alt="Soil Moisture" class="h-20 mb-4">
-              <h3 class="text-xl font-semibold text-green">Soil Moisture</h3>
+            <div class="flip-card-front">
+              <h3 class="service-title">Soil Moisture</h3>
+              <img src="./assets/soil-moisture.png" alt="Soil Moisture" class="service-image">
             </div>
-            <div class="flip-card-back flex items-center justify-center p-6">
-              <p class="text-gray-600">Generates soil moisture reports to help farmers decide crop types and irrigation
-                management strategies based on soil's water content.</p>
+            <div class="flip-card-back">
+              <p class="service-description">Generates soil moisture report every 12 days, helping in water management
+                strategies and irrigation decisions.</p>
             </div>
           </div>
         </div>
 
-        <!-- Crop Health Card -->
-        <div class="flip-card w-64 h-80">
+        <!-- Service Card 5: Crop Calendar -->
+        <div class="service-card">
           <div class="flip-card-inner">
-            <div class="flip-card-front flex flex-col items-center justify-center p-6">
-              <img src="./assets/crop-health.png" alt="Crop Health" class="h-20 mb-4">
-              <h3 class="text-xl font-semibold text-green">Crop Health</h3>
+            <div class="flip-card-front">
+              <h3 class="service-title">Crop Calendar</h3>
+              <img src="./assets/crop-calendar.png" alt="Crop Calendar" class="service-image">
             </div>
-            <div class="flip-card-back flex items-center justify-center p-6">
-              <p class="text-gray-600">NDVI reports generated every 5 days help farmers pinpoint crop issues, allowing
-                them to focus on areas that need the most attention.</p>
+            <div class="flip-card-back">
+              <p class="service-description">A planning tool that helps farmers with information on sowing rates,
+                planting material, and farming practices.</p>
             </div>
           </div>
         </div>
 
-        <!-- Weather Forecast Card -->
-        <div class="flip-card w-64 h-80">
+        <!-- Service Card 6: Crop Health -->
+        <div class="service-card">
           <div class="flip-card-inner">
-            <div class="flip-card-front flex flex-col items-center justify-center p-6">
-              <img src="./assets/weather.png" alt="Weather Forecast" class="h-20 mb-4">
-              <h3 class="text-xl font-semibold text-green">Weather Forecast</h3>
+            <div class="flip-card-front">
+              <h3 class="service-title">Crop Health</h3>
+              <img src="./assets/crop-health.png" alt="Crop Health" class="service-image">
             </div>
-            <div class="flip-card-back flex items-center justify-center p-6">
-              <p class="text-gray-600">SINAGRO app provides weekly and daily weather reports, including wind speed, UV
-                level, humidity, and "feels like" temperature.</p>
+            <div class="flip-card-back">
+              <p class="service-description">Generates NDVI report every 5 days to identify crop health and focus on
+                areas needing attention.</p>
             </div>
           </div>
         </div>
 
-        <!-- Crop Calendar Card -->
-        <div class="flip-card w-64 h-80">
+        <!-- Service Card 7: Weather Forecast -->
+        <div class="service-card">
           <div class="flip-card-inner">
-            <div class="flip-card-front flex flex-col items-center justify-center p-6">
-              <img src="./assets/crop-calendar.png" alt="Crop Calendar" class="h-20 mb-4">
-              <h3 class="text-xl font-semibold text-green">Crop Calendar</h3>
+            <div class="flip-card-front">
+              <h3 class="service-title">Weather Forecast</h3>
+              <img src="./assets/weather.png" alt="Weather Forecast" class="service-image">
             </div>
-            <div class="flip-card-back flex items-center justify-center p-6">
-              <p class="text-gray-600">The crop calendar helps farmers plan farm activities and make decisions about
-                crop practices, from land preparation to harvest.</p>
+            <div class="flip-card-back">
+              <p class="service-description">Provides detailed weather information including wind speed, UV level,
+                humidity, temperature, and forecasts.</p>
             </div>
           </div>
         </div>
 
-        <!-- Pest and Disease Forewarning Card -->
-        <div class="flip-card w-64 h-80">
+        <!-- Service Card 8: Pest and Disease Forewarning -->
+        <div class="service-card">
           <div class="flip-card-inner">
-            <div class="flip-card-front flex flex-col items-center justify-center p-6">
-              <img src="./assets/pest-disease.png" alt="Pest and Disease Forewarning" class="h-20 mb-4">
-              <h3 class="text-xl font-semibold text-green">Pest and Disease Forewarning</h3>
+            <div class="flip-card-front">
+              <h3 class="service-title">Pest and Disease Forewarning</h3>
+              <img src="./assets/pest-disease.png" alt="Pest and Disease Forewarning" class="service-image">
             </div>
-            <div class="flip-card-back flex items-center justify-center p-6">
-              <p class="text-gray-600">Provides forewarning on pests and diseases, helping farmers take timely action
-                with symptoms and management solutions.</p>
+            <div class="flip-card-back">
+              <p class="service-description">Provides timely information on pests and diseases for crop protection,
+                including symptoms and management solutions.</p>
             </div>
           </div>
         </div>
 
-        <!-- Buy and Sell Card -->
-        <div class="flip-card w-64 h-80">
+        <!-- Service Card 9: Buy and Sell -->
+        <div class="service-card">
           <div class="flip-card-inner">
-            <div class="flip-card-front flex flex-col items-center justify-center p-6">
-              <img src="./assets/buy-sell.png" alt="Buy and Sell" class="h-20 mb-4">
-              <h3 class="text-xl font-semibold text-green">Buy and Sell</h3>
+            <div class="flip-card-front">
+              <h3 class="service-title">Buy and Sell</h3>
+              <img src="./assets/buy-sell.png" alt="Buy and Sell" class="service-image">
             </div>
-            <div class="flip-card-back flex items-center justify-center p-6">
-              <p class="text-gray-600">SINAGRO enables farmers to post their crops for sale, reaching buyers directly
-                and facilitating trade without intermediaries.</p>
+            <div class="flip-card-back">
+              <p class="service-description">A platform for farmers to post commodities for global reach, facilitating
+                direct trading without intermediaries.</p>
             </div>
           </div>
         </div>
@@ -441,6 +489,7 @@
       </div>
     </div>
   </section>
+
 
 
   <!-- Testimonials Section with Flip Animation -->
@@ -464,27 +513,7 @@
     </div>
   </section>
 
-  <!-- Blog Section with Flip Animation -->
-  <section id="blog" class="py-16 bg-white px-4">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold text-green">Latest News & Articles</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-        <div class="flip-card border-green border-2">
-          <div class="flip-card-inner bg-gray-100 p-6 rounded-lg shadow-lg">
-            <div class="flip-card-front flex flex-col items-center justify-center p-6">
-              <img src="" alt="Article" class="rounded-lg">
-              <h3 class="mt-4 text-xl font-semibold text-green">How to Optimize Your Crop Yield</h3>
-              <p class="mt-2 text-gray-600">Learn the best techniques...</p>
-            </div>
-            <div class="flip-card-back flex flex-col items-center justify-center p-6">
-              <p>Explore expert tips to increase crop productivity and efficiency on your farm.</p>
-              <a href="#" class="mt-4 inline-block text-secondary">Read more</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
   <!-- Subscribe Section -->
   <section id="subscribe" class="py-10 bg-gray-100 text-center">
     <div class="container mx-auto max-w-3xl">
