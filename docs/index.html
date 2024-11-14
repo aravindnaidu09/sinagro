@@ -8,6 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400&display=swap" rel="stylesheet">
   <link href="./dist/output.css" rel="stylesheet">
   <link rel="icon" href="./assets/logo-no-bg.png" type="image/x-icon">
+  <!-- Existing links and styles -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
   <style>
     /* General Styling */
@@ -181,36 +183,38 @@
       /* Add a subtle shadow for depth */
     }
 
-    /* Fade-in Animation */
     @keyframes fadeInUp {
-      from {
+      0% {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(20px) scale(0.95);
       }
 
-      to {
+      50% {
+        opacity: 0.5;
+        transform: translateY(10px) scale(1);
+      }
+
+      100% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
       }
     }
 
     .about-card {
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards;
+      animation: fadeInUp 1.2s ease forwards;
     }
 
     .about-card:nth-child(1) {
-      animation-delay: 0.2s;
+      animation-delay: 0.3s;
     }
 
     .about-card:nth-child(2) {
-      animation-delay: 0.4s;
-    }
-
-    .about-card:nth-child(3) {
       animation-delay: 0.6s;
     }
 
+    .about-card:nth-child(3) {
+      animation-delay: 0.9s;
+    }
 
     #scrollTopBtn {
       position: fixed;
@@ -276,6 +280,42 @@
     .mobile-menu {
       @apply transition-all duration-300 ease-in-out;
     }
+
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel-slide {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+    }
+
+
+    /* Carousel Slide Animation */
+    @keyframes slide {
+      0% {
+        transform: translateX(0);
+      }
+
+      50% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    /* Apply the Animation */
+    .carousel {
+      animation: slide 10s infinite;
+    }
   </style>
 </head>
 
@@ -291,10 +331,13 @@
       <!-- Desktop Navigation Links (Right Aligned) -->
       <nav class="hidden md:flex space-x-8">
         <a href="#home" class="nav-link" onclick="setActiveLink(this)">Home</a>
-        <a href="#about" class="nav-link font-medium focus:font-bold active:font-bold" onclick="setActiveLink(this)">About</a>
-        <a href="#services" class="nav-link font-medium focus:font-bold active:font-bold" onclick="setActiveLink(this)">Services</a>
+        <a href="#about" class="nav-link font-medium focus:font-bold active:font-bold"
+          onclick="setActiveLink(this)">About</a>
+        <a href="#services" class="nav-link font-medium focus:font-bold active:font-bold"
+          onclick="setActiveLink(this)">Services</a>
         <!-- <a href="#blog" class="nav-link">Blog</a> -->
-        <a href="#contact" class="nav-link font-medium focus:font-bold active:font-bold" onclick="setActiveLink(this)">Contact</a>
+        <a href="#contact" class="nav-link font-medium focus:font-bold active:font-bold"
+          onclick="setActiveLink(this)">Contact</a>
       </nav>
 
 
@@ -317,25 +360,47 @@
   </header>
 
   <!-- Hero Section -->
-  <section id="home"
-    class="relative bg-cover bg-center h-screen flex flex-col justify-center items-center text-center px-4 text-white"
-    style="background-image: url('');">
-    <h1 class="text-4xl sm:text-5xl font-bold text-green">Welcome to Sinagro</h1>
-    <p class="text-lg mt-4">Innovative solutions for modern agriculture</p>
-    <a href="#services" class="mt-6 bg-green text-white py-2 px-6 rounded-full hover:bg-opacity-75">Explore Services</a>
+  <section id="hero" class="relative w-full h-screen bg-gray-100 flex items-center justify-center overflow-hidden">
+    <!-- "Welcome to Sinagro" Text Positioned at the Top Right -->
+    <div class="absolute top-8 right-8 z-20">
+      <h1 class="text-4xl sm:text-5xl font-bold text-yellow-400 drop-shadow-md">Welcome to Sinagro</h1>
+    </div>
+
+    <!-- Carousel Container -->
+    <div class="carousel-container relative w-full h-full overflow-hidden">
+      <!-- Slide 1 -->
+      <div class="carousel-slide absolute inset-0 flex items-center justify-center">
+        <img src="./assets/Slide2.jpg" alt="Sinagro Services" class="w-full h-full object-cover">
+      </div>
+      <!-- Slide 2 -->
+      <div class="carousel-slide absolute inset-0 flex items-center justify-center">
+        <img src="./assets/Slide4.jpg" alt="How Sinagro App Works" class="w-full h-full object-cover">
+      </div>
+    </div>
+
+    <!-- Explore Services Button -->
+    <div class="absolute bottom-12 text-center w-full z-20">
+      <a href="#services" class="mt-6 bg-green text-white py-2 px-6 rounded-full hover:bg-opacity-75">
+        Explore Services
+      </a>
+    </div>
   </section>
+
+
+
 
   <!-- About Section -->
   <section id="about" class="py-16 bg-gray-100">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold text-green mb-8">About Sinagro</h2>
+      <h2 class="text-3xl font-bold text-green-600 mb-8">About Sinagro</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
         <!-- Our Team Section -->
         <div
-          class="about-card transform transition duration-500 hover:scale-105 hover:shadow-lg bg-white rounded-lg overflow-hidden">
+          class="about-card transform opacity-0 translate-y-8 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-xl bg-white rounded-lg overflow-hidden shadow-md">
           <img src="./assets/sinagro-team.png" alt="Our Team" class="w-full h-56 object-cover">
           <div class="p-6">
-            <h3 class="text-2xl font-semibold text-green mb-4">Our Team</h3>
+            <h3 class="text-2xl font-semibold text-green-600 mb-4">Our Team</h3>
             <p class="text-gray-600">Our team at Sinagro is made up of experienced and knowledgeable professionals who
               are passionate about agriculture. We work together to provide exceptional service to our clients.</p>
           </div>
@@ -343,10 +408,10 @@
 
         <!-- Our Mission Section -->
         <div
-          class="about-card transform transition duration-500 hover:scale-105 hover:shadow-lg bg-white rounded-lg overflow-hidden">
+          class="about-card transform opacity-0 translate-y-8 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-xl bg-white rounded-lg overflow-hidden shadow-md">
           <img src="./assets/sinagro-mission.png" alt="Our Mission" class="w-full h-56 object-cover">
           <div class="p-6">
-            <h3 class="text-2xl font-semibold text-green mb-4">Our Mission</h3>
+            <h3 class="text-2xl font-semibold text-green-600 mb-4">Our Mission</h3>
             <p class="text-gray-600">At Sinagro, we are committed to providing high-quality agricultural services that
               help our clients succeed. We believe in sustainable farming practices and strive to be good stewards of
               the land.</p>
@@ -355,10 +420,10 @@
 
         <!-- Our Story Section -->
         <div
-          class="about-card transform transition duration-500 hover:scale-105 hover:shadow-lg bg-white rounded-lg overflow-hidden">
+          class="about-card transform opacity-0 translate-y-8 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-xl bg-white rounded-lg overflow-hidden shadow-md">
           <img src="./assets/sinagro-story.png" alt="Our Story" class="w-full h-56 object-cover">
           <div class="p-6">
-            <h3 class="text-2xl font-semibold text-green mb-4">Our Story</h3>
+            <h3 class="text-2xl font-semibold text-green-600 mb-4">Our Story</h3>
             <p class="text-gray-600">Founded in 2022, Sinagro started as a small family-owned farm. Over the years, we
               have expanded our services and now offer a wide range of agricultural solutions to businesses in the area.
             </p>
@@ -507,25 +572,51 @@
 
 
   <!-- Testimonials Section with Flip Animation -->
-  <section id="testimonials" class="py-16 bg-gray-50 px-4">
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="py-16 bg-gray-100">
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold text-green">What Our Farmers Say</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-        <div class="flip-card border-green border-2">
-          <div class="flip-card-inner bg-white p-6 rounded-lg shadow-lg">
-            <div class="flip-card-front flex flex-col items-center justify-center p-6">
-              <p class="italic text-green">"Sinagro's consulting services helped us increase our yield by 30%!"</p>
-              <h3 class="mt-4 font-bold">- Farmer John</h3>
-            </div>
-            <div class="flip-card-back flex flex-col items-center justify-center p-6">
-              <p class="italic">More great feedback from our valued farmers.</p>
-              <h3 class="mt-4 font-bold">- Sinagro</h3>
-            </div>
-          </div>
+      <h2 class="text-3xl font-bold text-green-600 mb-8">What Our Farmers Say</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Testimonial Card 1 -->
+        <div class="bg-white rounded-lg shadow-md p-6 transition transform hover:-translate-y-2 hover:shadow-lg">
+          <p class="text-gray-700 mb-4">"As a farmer, managing soil health and maximizing crop yield are always top
+            priorities, but doing it efficiently is a constant challenge. Sinagro Services has been instrumental in
+            transforming the way I farm. With their precision farming tools and remote sensing technology, I can now
+            monitor soil health in real-time, identify areas that need specific care, and adjust inputs accordingly.
+            This level of detail has not only improved the health of my soil but has also reduced waste and increased my
+            crop yield. Sinagro’s expertise and support have made precision farming practical and accessible, and I
+            highly recommend their services to any farmer looking to improve their farming practices."</p>
+          <h3 class="text-xl font-semibold text-green-600 italic">- Farmer Sanjeev Reddy</h3>
         </div>
+
+        <!-- Testimonial Card 2 -->
+        <div class="bg-white rounded-lg shadow-md p-6 transition transform hover:-translate-y-2 hover:shadow-lg">
+          <p class="text-gray-700 mb-4">"Water management is crucial on my mango farm, especially during the dry season,
+            when every drop counts. Thanks to Sinagro’s Smart Motor Devices, I’ve been able to monitor and control water
+            usage with precision. The smart system helps me irrigate only when needed, reducing waste and ensuring my
+            trees get the right amount of water to thrive. It has made my irrigation process more efficient, saving
+            water and cutting down on energy costs. Sinagro’s technology has been a game-changer for sustainable
+            farming, and I highly recommend it to other farmers aiming for efficiency and better yield."</p>
+          <h3 class="text-xl font-semibold text-green-600 italic">- Farmer Sandeep Kumar</h3>
+        </div>
+
+        <!-- Testimonial Card 3 -->
+        <div class="bg-white rounded-lg shadow-md p-6 transition transform hover:-translate-y-2 hover:shadow-lg">
+          <p class="text-gray-700 mb-4">"Growing maize requires close monitoring of soil and crop health to achieve the
+            best results. With Sinagro Services, I received detailed soil health reports, crop health assessments, and
+            soil moisture analysis through remote sensing. This information has been invaluable in making timely
+            decisions about fertilization, irrigation, and pest control, ultimately increasing my crop yield. Sinagro’s
+            precision tools allow me to focus resources exactly where they’re needed, leading to healthier plants and
+            higher productivity. I am truly grateful for the support from Sinagro and highly recommend their services to
+            other farmers looking to optimize their crop production."</p>
+          <h3 class="text-xl font-semibold text-green-600 italic">- Farmer Vijay Kumar</h3>
+        </div>
+
       </div>
     </div>
   </section>
+
 
 
   <!-- Subscribe Section -->
@@ -545,9 +636,10 @@
     <div class="container mx-auto max-w-2xl">
       <h2 class="text-3xl font-bold text-green mb-4">Connect With Us</h2>
       <div class="flex justify-center items-center gap-4 border-t border-b py-6 border-green">
-        <a href="#" class="text-pink-500 text-2xl hover:text-pink-400"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.instagram.com/sinagro_india/" target="_blank" class="text-pink-500 text-2xl hover:text-pink-400"><i class="fab fa-instagram"></i></a>
         <a href="#" class="text-blue-500 text-2xl hover:text-blue-400"><i class="fab fa-facebook-f"></i></a>
         <a href="#" class="text-blue-300 text-2xl hover:text-blue-200"><i class="fab fa-twitter"></i></a>
+        
       </div>
     </div>
   </section>
@@ -599,6 +691,27 @@
   <div id="scrollTopBtn" title="Scroll to top">↑</div>
 
   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const aboutSection = document.querySelector("#about");
+      const cards = document.querySelectorAll(".about-card");
+
+      function revealCards() {
+        const sectionPosition = aboutSection.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.2;
+
+        if (sectionPosition < screenPosition) {
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.remove("opacity-0", "translate-y-8");
+              card.classList.add("opacity-100", "translate-y-0");
+            }, index * 150); // Delay each card slightly for a staggered effect
+          });
+          window.removeEventListener("scroll", revealCards);
+        }
+      }
+
+      window.addEventListener("scroll", revealCards);
+    });
     // Toggle Mobile Menu
     const menuButton = document.getElementById("menuButton");
     const mobileNav = document.getElementById("mobileNav");
@@ -644,6 +757,31 @@
     }
 
     window.addEventListener('scroll', handleScrollAnimation);
+
+    // Carousel functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+          slide.classList.add('active');
+        }
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
+    }
+
+    // Initial display
+    showSlide(currentSlide);
+
+    // Set interval for the slide transition
+    setInterval(nextSlide, 5000); // Change slide every 5 seconds
 
   </script>
 
