@@ -20,6 +20,13 @@
   <link rel="preload" href="./assets/weather.webp" as="image">
   <link rel="preload" href="./assets/smart-irrigation.webp" as="image">
   <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
     /* General Styling */
     #services {
       background-color: white;
@@ -400,11 +407,11 @@
       <div class="carousel-container relative w-full h-full overflow-hidden">
         <!-- Slide 1 -->
         <div class="carousel-slide absolute inset-0 flex items-center justify-center">
-          <img src="./assets/Slide2.jpg" alt="Sinagro Services" class="w-full h-full object-cover">
+          <img src="./assets/Slide2.jpg" alt="Sinagro Services" class="w-full h-full object-contain">
         </div>
         <!-- Slide 2 -->
         <div class="carousel-slide absolute inset-0 flex items-center justify-center">
-          <img src="./assets/Slide4.jpg" alt="How Sinagro App Works" class="w-full h-full object-cover">
+          <img src="./assets/Slide4.jpg" alt="How Sinagro App Works" class="w-full h-full object-contain">
         </div>
       </div>
 
