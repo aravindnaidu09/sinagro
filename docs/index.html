@@ -356,61 +356,53 @@
 
 <body class="font-sans min-h-screen flex flex-col">
   <!-- Header (Navbar) -->
-  <header class="sticky bg-white shadow-md top-0 z-50">
-    <div class="flex justify-between items-center py-4">
-      <!-- Logo (Left Aligned) -->
+  <header id="header" class="sticky top-0 z-50 bg-white transition-all duration-300">
+    <div class="flex justify-between items-center py-4 px-6">
+      <!-- Logo -->
       <div class="flex items-center space-x-2">
         <img src="./assets/logo-no-bg.png" alt="Sinagro Logo" class="h-8 w-8">
-        <a href="#" class="text-2xl font-bold text-green">Sinagro</a>
+        <a href="#" class="text-2xl font-bold text-green-600">Sinagro</a>
       </div>
 
-      <!-- Desktop Navigation Links (Right Aligned) -->
+      <!-- Desktop Navigation Links -->
       <nav class="hidden md:flex space-x-8">
-        <a href="#home" class="nav-link" onclick="setActiveLink(this)">Home</a>
-        <a href="#about" class="nav-link font-medium focus:font-bold active:font-bold"
-          onclick="setActiveLink(this)">About</a>
-        <a href="#services" class="nav-link font-medium focus:font-bold active:font-bold"
-          onclick="setActiveLink(this)">Services</a>
-        <!-- <a href="#blog" class="nav-link">Blog</a> -->
-        <a href="#contact" class="nav-link font-medium focus:font-bold active:font-bold"
-          onclick="setActiveLink(this)">Contact</a>
+        <a href="#home" class="nav-link text-gray-700 hover:text-green-600">Home</a>
+        <a href="#about" class="nav-link text-gray-700 hover:text-green-600">About</a>
+        <a href="#services" class="nav-link text-gray-700 hover:text-green-600">Services</a>
+        <a href="#farmers" class="nav-link text-gray-700 hover:text-green-600">Farmers</a>
+        <a href="#contact" class="nav-link text-gray-700 hover:text-green-600">Contact</a>
       </nav>
 
-
-      <!-- Hamburger Icon for Mobile Menu (Hidden on Desktop) -->
-      <button id="menuButton" class="md:hidden text-black focus:outline-none">
+      <!-- Mobile Menu Icon -->
+      <button id="menuButton" class="md:hidden text-gray-700 focus:outline-none">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
     </div>
 
-    <!-- Mobile Menu (Initially Hidden) -->
-    <div id="mobileNav" class="mobile-menu hidden md:hidden bg-white text-black">
+    <!-- Mobile Navigation -->
+    <div id="mobileNav" class="hidden md:hidden bg-white text-gray-700">
       <a href="#home" class="block py-2 px-4 hover:bg-green-100 hover:text-green-600">Home</a>
       <a href="#about" class="block py-2 px-4 hover:bg-green-100 hover:text-green-600">About</a>
       <a href="#services" class="block py-2 px-4 hover:bg-green-100 hover:text-green-600">Services</a>
-      <!-- <a href="#blog" class="block py-2 px-4 hover:bg-green-100 hover:text-green-600">Blog</a> -->
       <a href="#contact" class="block py-2 px-4 hover:bg-green-100 hover:text-green-600">Contact</a>
     </div>
   </header>
 
+
   <main id="main-content" class="flex-grow">
     <!-- Hero Section -->
     <section id="home" class="relative w-full h-screen bg-gray-100 flex items-center justify-center overflow-hidden">
-      <!-- "Welcome to Sinagro" Text Positioned at the Top Right -->
-      <!-- <div class="absolute top-8 right-8 z-20">
-    <h1 class="text-4xl sm:text-5xl font-bold text-yellow-400 drop-shadow-md">Welcome to Sinagro</h1>
-  </div> -->
-
-      <!-- Carousel Container -->
       <div class="carousel-container relative w-full h-full overflow-hidden">
         <!-- Slide 1 -->
-        <div class="carousel-slide absolute inset-0 flex items-center justify-center">
+        <div
+          class="carousel-slide absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-1000 ease-in-out">
           <img src="./assets/Slide2.jpg" alt="Sinagro Services" class="w-full h-full object-contain">
         </div>
         <!-- Slide 2 -->
-        <div class="carousel-slide absolute inset-0 flex items-center justify-center">
+        <div
+          class="carousel-slide absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-1000 ease-in-out">
           <img src="./assets/Slide4.jpg" alt="How Sinagro App Works" class="w-full h-full object-contain">
         </div>
       </div>
@@ -418,7 +410,7 @@
       <!-- Explore Services Button -->
       <div class="absolute bottom-12 text-center w-full z-20">
         <a href="#services"
-          class="mt-6 bg-green text-white py-2 px-6 rounded-full hover:bg-opacity-75 button-animation">
+          class="mt-6 bg-green-600 text-white py-2 px-6 rounded-full hover:bg-green-700 transition-transform transform hover:scale-105">
           Explore Services
         </a>
       </div>
@@ -426,44 +418,54 @@
 
     <!-- About Section -->
     <section id="about" class="py-16 bg-gray-100">
-      <div class="container mx-auto text-center">
-        <h2 class="text-3xl font-bold text-green-600 mb-8">About Sinagro</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="container mx-auto">
+        <!-- Mission Section -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 leading-tight mb-10">
+            At Sinagro, we are committed to providing <span class="text-orange-500">high-quality agricultural
+              services</span> that help our clients succeed.
+            <br />
+            We believe in sustainable farming practices and strive to be good stewards of the land.
+          </h2>
+        </div>
 
-          <!-- Our Team Section -->
-          <div
-            class="about-card transform opacity-0 translate-y-8 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-xl bg-white rounded-lg overflow-hidden shadow-md">
-            <img src="./assets/sinagro-team.png" alt="Our Team" class="w-full h-56 object-cover">
-            <div class="p-6">
-              <h3 class="text-2xl font-semibold text-green-600 mb-4">Our Team</h3>
-              <p class="text-gray-600">Our team at Sinagro is made up of experienced and knowledgeable professionals who
-                are passionate about agriculture. We work together to provide exceptional service to our clients.</p>
-            </div>
+        <!-- How Did We Get Here Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-12">
+          <!-- Image -->
+          <div class="flex justify-center max-w-[250px] max-h-[250px] mx-auto">
+            <img src="./assets/sinagro-story.png" alt="Our Story" class="object-contain rounded-lg shadow-md" />
           </div>
-
-          <!-- Our Mission Section -->
-          <div
-            class="about-card transform opacity-0 translate-y-8 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-xl bg-white rounded-lg overflow-hidden shadow-md">
-            <img src="./assets/sinagro-mission.png" alt="Our Mission" class="w-full h-56 object-cover">
-            <div class="p-6">
-              <h3 class="text-2xl font-semibold text-green-600 mb-4">Our Mission</h3>
-              <p class="text-gray-600">At Sinagro, we are committed to providing high-quality agricultural services that
-                help our clients succeed. We believe in sustainable farming practices and strive to be good stewards of
-                the land.</p>
-            </div>
+          <!-- Text -->
+          <div>
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              How did we get <span class="text-orange-500">here?</span>
+            </h3>
+            <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+              Founded in 2022, Sinagro started as a small family-owned farm. Over the years, we have expanded our
+              services and now offer a wide range of agricultural solutions to businesses in the area.
+            </p>
+            <p class="text-gray-700 text-base md:text-lg leading-relaxed mt-4">
+              In these years, we've assembled a tight-knit team of professionals united by a common aim: to build
+              products that matter.
+            </p>
           </div>
+        </div>
 
-          <!-- Our Story Section -->
-          <div
-            class="about-card transform opacity-0 translate-y-8 transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-xl bg-white rounded-lg overflow-hidden shadow-md">
-            <img src="./assets/sinagro-story.png" alt="Our Story" class="w-full h-56 object-cover">
-            <div class="p-6">
-              <h3 class="text-2xl font-semibold text-green-600 mb-4">Our Story</h3>
-              <p class="text-gray-600">Founded in 2022, Sinagro started as a small family-owned farm. Over the years, we
-                have expanded our services and now offer a wide range of agricultural solutions to businesses in the
-                area.
-              </p>
-            </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <!-- Text -->
+          <div>
+            <h3 class="text-3xl font-bold text-gray-900 mb-4">Our <span class="text-orange-500">Team</span></h3>
+            <p class="text-gray-700 text-lg leading-relaxed">
+              Our team at Sinagro is made up of experienced and knowledgeable professionals who are passionate about
+              agriculture.
+              We work together to provide exceptional service to our clients.
+            </p>
+          </div>
+          <!-- Image -->
+          <div class="flex justify-center max-w-[300px] max-h-[300px] mx-auto">
+            <img src="./assets/sinagro-team.png" alt="Our Team"
+              class="w-[300px] h-[300px] object-contain rounded-lg shadow-md" />
           </div>
         </div>
       </div>
@@ -475,24 +477,9 @@
         <h2 class="text-3xl font-bold text-gray-800 mb-12">Our Services</h2>
         <div class="flex flex-wrap justify-center gap-8">
 
-          <!-- Service Card 1: Smart Irrigation -->
-          <div class="service-card">
-            <div class="flip-card-inner">
-              <!-- Front Side: Only Image -->
-              <div class="flip-card-front">
-                <img src="./assets/smart-irrigation.webp" alt="Smart Irrigation" class="service-image w-full h-auto"
-                  loading="lazy">
-              </div>
-              <!-- Back Side: Title and Description -->
-              <div class="flip-card-back">
-                <h3 class="service-title">Smart Irrigation</h3>
-                <p class="service-description">IoT-based smart irrigation systems that improve crop yields, save water,
-                  and reduce the impact of climate change and drought.</p>
-              </div>
-            </div>
-          </div>
 
-          <!-- Service Card 2: Land Geo Tagging -->
+
+          <!-- Service Card 1: Land Geo Tagging -->
           <div class="service-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
@@ -508,7 +495,7 @@
             </div>
           </div>
 
-          <!-- Service Card 3: Soil Health Report -->
+          <!-- Service Card 2: Soil Health Report -->
           <div class="service-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
@@ -525,7 +512,7 @@
             </div>
           </div>
 
-          <!-- Service Card 4: Soil Moisture -->
+          <!-- Service Card 3: Soil Moisture -->
           <div class="service-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
@@ -541,23 +528,8 @@
             </div>
           </div>
 
-          <!-- Service Card 5: Crop Calendar -->
-          <div class="service-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front">
-                <img src="./assets/crop-calendar.webp" alt="Crop Calendar" class="service-image w-full h-auto"
-                  loading="lazy">
-              </div>
-              <div class="flip-card-back">
-                <h3 class="service-title">Crop Calendar</h3>
 
-                <p class="service-description">A planning tool that helps farmers with information on sowing rates,
-                  planting material, and farming practices.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Service Card 6: Crop Health -->
+          <!-- Service Card 4: Crop Health -->
           <div class="service-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
@@ -573,7 +545,7 @@
             </div>
           </div>
 
-          <!-- Service Card 7: Weather Forecast -->
+          <!-- Service Card 5: Weather Forecast -->
           <div class="service-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
@@ -589,7 +561,7 @@
             </div>
           </div>
 
-          <!-- Service Card 8: Pest and Disease Forewarning -->
+          <!-- Service Card 6: Pest and Disease Forewarning -->
           <div class="service-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
@@ -601,6 +573,40 @@
 
                 <p class="service-description">Provides timely information on pests and diseases for crop protection,
                   including symptoms and management solutions.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Service Card 7: Crop Calendar -->
+          <div class="service-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="./assets/crop-calendar.webp" alt="Crop Calendar" class="service-image w-full h-auto"
+                  loading="lazy">
+              </div>
+              <div class="flip-card-back">
+                <h3 class="service-title">Crop Calendar</h3>
+
+                <p class="service-description">A planning tool that helps farmers with information on sowing rates,
+                  planting material, and farming practices.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service Card 8: Smart Irrigation -->
+          <div class="service-card">
+            <div class="flip-card-inner">
+              <!-- Front Side: Only Image -->
+              <div class="flip-card-front">
+                <img src="./assets/smart-irrigation.webp" alt="Smart Irrigation" class="service-image w-full h-auto"
+                  loading="lazy">
+              </div>
+              <!-- Back Side: Title and Description -->
+              <div class="flip-card-back">
+                <h3 class="service-title">Smart Irrigation</h3>
+                <p class="service-description">IoT-based smart irrigation systems that improve crop yields, save water,
+                  and reduce the impact of climate change and drought.</p>
               </div>
             </div>
           </div>
@@ -620,59 +626,314 @@
             </div>
           </div>
 
+
+
         </div>
       </div>
     </section>
 
+    <!--farmers service section-->
+    <section id="farmers" class="py-16 bg-gray-100">
+      <!-- Summary Section -->
+      <div class="flex justify-center items-center mb-12">
+        <div
+          class="max-w-3xl bg-white rounded-lg shadow-lg p-8 text-center transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+          <h2 class="text-2xl font-semibold text-black mb-4">
+            Get digitized crop solutions through the satellite-based crop monitoring system
+          </h2>
+          <p class="text-gray-700 text-lg">
+            We are here to help you to overcome various agricultural challenges from sowing to harvesting. We encourage
+            all
+            types of farmers - Small, Marginal, and Large to practice precision agriculture.
+          </p>
+        </div>
+      </div>
+
+      <!-- Points Section -->
+
+      <div class="container mx-auto">
+        <!-- Point 1 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Point 1 -->
+          <div
+            class="bg-gray-50  rounded-lg shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-row-reverse items-center">
+            <!-- Image -->
+            <div class="w-1/3 flex justify-center">
+              <img src="./assets/farmer-travelling.jpg" alt="Soil Test Report"
+                class="w-50 h-50 object-contain rounded-lg">
+            </div>
+            <!-- Text -->
+            <div class="w-2/3 px-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Are you traveling miles to get a soil test report?</h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Through satellite-based soil testing, we will provide you with accurate results regarding major soil
+                nutrients,
+                such as NPK, SOC, and pH, without traveling long distances.
+              </p>
+              <div class="flex gap-2 flex-wrap">
+                <span class="bg-gray-200 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">Soil Test</span>
+                <span class="bg-gray-200 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">Nutrients</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Point 2 -->
+          <div
+            class="bg-gray-50  rounded-lg shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-row-reverse items-center">
+            <!-- Image -->
+            <div class="w-1/3 flex justify-center">
+              <img src="./assets/health-status-of-farm.jpg" alt="NDVI Analysis"
+                class="w-50 h-50 object-contain rounded-lg">
+            </div>
+            <!-- Text -->
+            <div class="w-2/3 px-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Want to know the health status of your farm?</h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Find how crops are growing remotely using satellite-derived NDVI, which differentiates healthy crops
+                from
+                unhealthy ones.
+              </p>
+              <div class="flex gap-2 flex-wrap">
+                <span class="bg-gray-200 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">NDVI</span>
+                <span class="bg-gray-200 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">Health Check</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Point 3 -->
+          <div
+            class="bg-gray-50  rounded-lg shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-row-reverse items-center">
+            <!-- Image -->
+            <div class="w-1/3 flex justify-center">
+              <img src="./assets/farmer-worry-about-crop-damage.jpg" alt="Crop Damage"
+                class="w-50 h-50 object-contain rounded-lg">
+            </div>
+            <!-- Text -->
+            <div class="w-2/3 px-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Worried about crop damage and crop loss?</h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Protect your crops through stage-wise satellite-based diagnostics and reduce costs by minimizing
+                pesticide use.
+              </p>
+              <div class="flex gap-2 flex-wrap">
+                <span class="bg-gray-200 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">Damage Control</span>
+                <span class="bg-gray-200 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">Pesticides</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Point 4 -->
+          <div
+            class="bg-gray-50  rounded-lg shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-row-reverse items-center">
+            <!-- Image -->
+            <div class="w-1/3 flex justify-center">
+              <img src="./assets/eco-friendly.jpg" alt="Eco-Friendly Farming"
+                class="w-50 h-50 object-contain rounded-lg">
+            </div>
+            <!-- Text -->
+            <div class="w-2/3 px-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Make agriculture “eco-friendly farming”</h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Use precise amounts of pesticides to reduce environmental damage and achieve sustainable farming
+                practices.
+              </p>
+              <div class="flex gap-2 flex-wrap">
+                <span class="bg-gray-200 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">Eco-Friendly</span>
+                <span class="bg-gray-200 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">Pesticides</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Point 5 -->
+          <div
+            class="bg-gray-50  rounded-lg shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-row-reverse items-center">
+            <!-- Image -->
+            <div class="w-1/3 flex justify-center">
+              <img src="./assets/pest-disease-alerts.jpg" alt="Pest Warning"
+                class="w-50 h-50 object-contain rounded-lg">
+            </div>
+            <!-- Text -->
+            <div class="w-2/3 px-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Get early warning alerts for crop pest and disease
+                management</h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Forewarning of pests and diseases helps you take early measures to save crops from future loss.
+              </p>
+              <div class="flex gap-2 flex-wrap">
+                <span class="bg-gray-200 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">Pest Control</span>
+                <span class="bg-gray-200 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">Early Alerts</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Point 6 -->
+          <div
+            class="bg-gray-50  rounded-lg shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-row-reverse items-center">
+            <!-- Image -->
+            <div class="w-1/3 flex justify-center">
+              <img src="./assets/farm-operations.jpg" alt="Weather Prediction"
+                class="w-50 h-50 object-contain rounded-lg">
+            </div>
+            <!-- Text -->
+            <div class="w-2/3 px-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Want to plan your farm operations precisely?</h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Plan farm activities based on 14-day weather forecasts and optimize your operations effectively.
+              </p>
+              <div class="flex gap-2 flex-wrap">
+                <span class="bg-gray-200 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">Weather</span>
+                <span class="bg-gray-200 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">Farm Planning</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Point 7 -->
+          <div
+            class="bg-gray-50  rounded-lg shadow-lg p-6 border border-gray-200 hover:shadow-xl transition-shadow duration-300 flex flex-row-reverse items-center">
+            <!-- Image -->
+            <div class="w-1/3 flex justify-center">
+              <img src="./assets/keep-track.jpg" alt="Crop Calendar" class="w-50 h-50 object-contain rounded-lg">
+            </div>
+            <!-- Text -->
+            <div class="w-2/3 px-6">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Keep track of all farm activities to be taken up</h3>
+              <p class="text-gray-600 text-sm mb-4">
+                The crop calendar provides details on agricultural operations, pest management, and nutrient application
+                for 65+ crops.
+              </p>
+              <div class="flex gap-2 flex-wrap">
+                <span class="bg-gray-200 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">Crop Calendar</span>
+                <span class="bg-gray-200 text-gray-600 text-xs font-medium px-3 py-1 rounded-full">Activity
+                  Tracking</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- </div> -->
+    </section>
+
     <!-- Testimonials Section with Flip Animation -->
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-16 bg-gray-100">
+    <section id="testimonials" class="py-16 bg-gray-900">
       <div class="container mx-auto text-center">
-        <h2 class="text-3xl font-bold text-green-600 mb-8">What Our Farmers Say</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Section Title -->
+        <h2 class="text-2xl font-bold text-white mb-10">What Our Farmers Say About Us</h2>
 
+        <!-- Grid Layout for Testimonial Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <!-- Testimonial Card 1 -->
-          <div class="bg-white rounded-lg shadow-md p-6 transition transform hover:-translate-y-2 hover:shadow-lg">
-            <p class="text-gray-700 mb-4">"As a farmer, managing soil health and maximizing crop yield are always top
-              priorities, but doing it efficiently is a constant challenge. Sinagro Services has been instrumental in
-              transforming the way I farm. With their precision farming tools and remote sensing technology, I can now
-              monitor soil health in real-time, identify areas that need specific care, and adjust inputs accordingly.
-              This level of detail has not only improved the health of my soil but has also reduced waste and increased
-              my
-              crop yield. Sinagro’s expertise and support have made precision farming practical and accessible, and I
-              highly recommend their services to any farmer looking to improve their farming practices."</p>
-            <h3 class="text-xl font-semibold text-green-600 italic">- Farmer Sanjeev Reddy</h3>
+          <div class="bg-gray-800 rounded-lg p-4 shadow-lg relative overflow-hidden">
+            <!-- Circular Icon at the Top -->
+            <div class="absolute top-[-20px] left-[50%] transform -translate-x-1/2">
+              <div class="bg-gray-900 w-10 h-10 rounded-full flex items-center justify-center">
+                <span class="text-orange-500 text-xl font-bold">&ldquo;</span>
+              </div>
+            </div>
+
+            <!-- Testimonial Content -->
+            <p class="text-gray-300 mt-6 mb-3 text-sm text-left">
+              Sinagro’s precision farming tools have transformed my farming practices, improving soil health and crop
+              yield.
+              Their tools allow me to monitor specific areas and adjust inputs efficiently. Highly recommended for
+              modern farmers!
+            </p>
+
+            <!-- Farmer's Information -->
+            <div class="flex items-center gap-3 mt-3">
+              <!-- <img src="./assets/farmer1.jpg" alt="Farmer Sanjeev Reddy" class="w-10 h-10 rounded-full object-cover"> -->
+              <div>
+                <h3 class="text-white text-sm font-semibold">Farmer Sanjeev Reddy</h3>
+                <span class="text-gray-500 text-xs">Precision Farming</span>
+              </div>
+            </div>
+
+            <!-- Call-to-Action Buttons -->
+            <!-- <div class="flex justify-between items-center mt-4 border-t pt-2 border-gray-700">
+              <a href="#" class="text-xs text-green-500 hover:underline">Explore Case Study</a>
+              <a href="#" class="text-xs text-green-500 hover:underline">See Full Review</a>
+            </div> -->
           </div>
 
           <!-- Testimonial Card 2 -->
-          <div class="bg-white rounded-lg shadow-md p-6 transition transform hover:-translate-y-2 hover:shadow-lg">
-            <p class="text-gray-700 mb-4">"Water management is crucial on my mango farm, especially during the dry
-              season,
-              when every drop counts. Thanks to Sinagro’s Smart Motor Devices, I’ve been able to monitor and control
-              water
-              usage with precision. The smart system helps me irrigate only when needed, reducing waste and ensuring my
-              trees get the right amount of water to thrive. It has made my irrigation process more efficient, saving
-              water and cutting down on energy costs. Sinagro’s technology has been a game-changer for sustainable
-              farming, and I highly recommend it to other farmers aiming for efficiency and better yield."</p>
-            <h3 class="text-xl font-semibold text-green-600 italic">- Farmer Sandeep Kumar</h3>
+          <div class="bg-gray-800 rounded-lg p-4 shadow-lg relative overflow-hidden">
+            <!-- Circular Icon at the Top -->
+            <div class="absolute top-[-20px] left-[50%] transform -translate-x-1/2">
+              <div class="bg-gray-900 w-10 h-10 rounded-full flex items-center justify-center">
+                <span class="text-orange-500 text-xl font-bold">&ldquo;</span>
+              </div>
+            </div>
+
+            <!-- Testimonial Content -->
+            <p class="text-gray-300 mt-6 mb-3 text-sm text-left">
+              Sinagro’s Smart Motor Devices revolutionized irrigation on my mango farm. It reduced water waste, improved
+              efficiency, and cut energy costs. Perfect for sustainable farming!
+            </p>
+
+            <!-- Farmer's Information -->
+            <div class="flex items-center gap-3 mt-3">
+              <!-- <img src="./assets/farmer2.jpg" alt="Farmer Sandeep Kumar" class="w-10 h-10 rounded-full object-cover"> -->
+              <div>
+                <h3 class="text-white text-sm font-semibold">Farmer Sandeep Kumar</h3>
+                <span class="text-gray-500 text-xs">Smart Irrigation</span>
+              </div>
+            </div>
+
+            <!-- Call-to-Action Buttons -->
+            <!-- <div class="flex justify-between items-center mt-4 border-t pt-2 border-gray-700">
+              <a href="#" class="text-xs text-green-500 hover:underline">Explore Case Study</a>
+              <a href="#" class="text-xs text-green-500 hover:underline">See Full Review</a>
+            </div> -->
           </div>
 
           <!-- Testimonial Card 3 -->
-          <div class="bg-white rounded-lg shadow-md p-6 transition transform hover:-translate-y-2 hover:shadow-lg">
-            <p class="text-gray-700 mb-4">"Growing maize requires close monitoring of soil and crop health to achieve
-              the
-              best results. With Sinagro Services, I received detailed soil health reports, crop health assessments, and
-              soil moisture analysis through remote sensing. This information has been invaluable in making timely
-              decisions about fertilization, irrigation, and pest control, ultimately increasing my crop yield.
-              Sinagro’s
-              precision tools allow me to focus resources exactly where they’re needed, leading to healthier plants and
-              higher productivity. I am truly grateful for the support from Sinagro and highly recommend their services
-              to
-              other farmers looking to optimize their crop production."</p>
-            <h3 class="text-xl font-semibold text-green-600 italic">- Farmer Vijay Kumar</h3>
-          </div>
+          <div class="bg-gray-800 rounded-lg p-4 shadow-lg relative overflow-hidden">
+            <!-- Circular Icon at the Top -->
+            <div class="absolute top-[-20px] left-[50%] transform -translate-x-1/2">
+              <div class="bg-gray-900 w-10 h-10 rounded-full flex items-center justify-center">
+                <span class="text-orange-500 text-xl font-bold">&ldquo;</span>
+              </div>
+            </div>
 
+            <!-- Testimonial Content -->
+            <p class="text-gray-300 mt-6 mb-3 text-sm text-left">
+              Sinagro’s reports and precision tools helped optimize my maize farming. Real-time soil and crop monitoring
+              boosted productivity and sustainability. A true game-changer!
+            </p>
+
+            <!-- Farmer's Information -->
+            <div class="flex items-center gap-3 mt-3">
+              <!-- <img src="./assets/farmer3.jpg" alt="Farmer Vijay Kumar" class="w-10 h-10 rounded-full object-cover"> -->
+              <div>
+                <h3 class="text-white text-sm font-semibold">Farmer Vijay Kumar</h3>
+                <span class="text-gray-500 text-xs">Soil & Crop Health</span>
+              </div>
+            </div>
+
+            <!-- Call-to-Action Buttons -->
+            <!-- <div class="flex justify-between items-center mt-4 border-t pt-2 border-gray-700">
+              <a href="#" class="text-xs text-green-500 hover:underline">Explore Case Study</a>
+              <a href="#" class="text-xs text-green-500 hover:underline">See Full Review</a>
+            </div> -->
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Download App Section -->
+    <section id="download" class="py-10 bg-white text-center">
+      <div class="transform transition-transform duration-500 group-hover:scale-105 flex justify-center">
+        <img src="./assets/mobile-download.jpg" alt="Mobile Download"
+          class="rounded-lg shadow-lg w-full max-w-[400px] h-auto mx-auto object-contain">
+      </div>
+      <div class="container mx-auto max-w-2xl">
+        <h2 class="text-3xl font-bold text-green mb-2">Download Sinagro Mobile App</h2>
+        <p class="text-gray-700 mb-6">Experience the real farming</p>
+        <a href="https://play.google.com/store/apps/details?id=com.sinagromobile" target="_blank"
+          class="inline-block bg-green text-white py-3 px-10 rounded-full font-bold text-lg hover:bg-opacity-90 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg transition-all duration-150">Click
+          here to Download</a>
       </div>
     </section>
 
@@ -685,8 +946,7 @@
           <input type="email" placeholder="Email"
             class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none">
           <button
-            class="bg-green text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg transition-all duration-150">Sign
-            up</button>
+            class="bg-green text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg transition-all duration-150">Join Us</button>
         </div>
       </div>
     </section>
@@ -729,16 +989,7 @@
       </div>
     </section>
 
-    <!-- Download App Section -->
-    <section id="download" class="py-10 bg-white text-center">
-      <div class="container mx-auto max-w-2xl">
-        <h2 class="text-3xl font-bold text-green mb-2">Download Sinagro Mobile App</h2>
-        <p class="text-gray-700 mb-6">Experience the real farming</p>
-        <a href="https://play.google.com/store/apps/details?id=com.sinagromobile" target="_blank"
-          class="inline-block bg-green text-white py-3 px-10 rounded-full font-bold text-lg hover:bg-opacity-90 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg transition-all duration-150">Click
-          here to Download</a>
-      </div>
-    </section>
+
   </main>
 
   <!-- Footer -->
@@ -873,6 +1124,18 @@
     }
 
     window.addEventListener("scroll", highlightNavbarLink);
+
+    window.addEventListener("scroll", () => {
+      const header = document.getElementById("header");
+      const heroSection = document.getElementById("home");
+
+      // Check if the scroll position has passed the hero section
+      if (window.scrollY > heroSection.offsetHeight - header.offsetHeight) {
+        header.classList.add("shadow-md", "border-b", "border-gray-300");
+      } else {
+        header.classList.remove("shadow-md", "border-b", "border-gray-300");
+      }
+    });
   </script>
 
 </body>
