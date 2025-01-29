@@ -189,14 +189,20 @@
       /* Set selected link color */
     }
 
-    .sticky-header {
+    #header {
       position: sticky;
       top: 0;
       z-index: 50;
       background-color: white;
-      /* White background */
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      /* Add a subtle shadow for depth */
+      transition: all 0.3s ease;
+    }
+
+    .shadow-md {
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .border-b {
+      border-bottom: 1px solid #e5e5e5;
     }
 
     @keyframes fadeInUp {
@@ -351,6 +357,42 @@
     .hidden-section {
       display: none;
     }
+
+    /* Drop and Bounce Animation */
+    @keyframes dropBounce {
+      0% {
+        transform: translateY(-300px);
+        opacity: 0;
+      }
+
+      60% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      75% {
+        transform: translateY(-20px);
+      }
+
+      90% {
+        transform: translateY(0);
+      }
+
+      95% {
+        transform: translateY(-10px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    /* Apply Animation */
+    .drop-bounce-animation {
+      animation: dropBounce 1.5s ease-out forwards;
+      opacity: 1;
+      /* Ensure visibility after animation */
+    }
   </style>
 </head>
 
@@ -386,6 +428,7 @@
       <a href="#home" class="block py-2 px-4 hover:bg-green-100 hover:text-green-600">Home</a>
       <a href="#about" class="block py-2 px-4 hover:bg-green-100 hover:text-green-600">About</a>
       <a href="#services" class="block py-2 px-4 hover:bg-green-100 hover:text-green-600">Services</a>
+      <a href="#farmers" class="block py-2 px-4 hover:bg-green-100 hover:text-green-600">Farmers</a>
       <a href="#contact" class="block py-2 px-4 hover:bg-green-100 hover:text-green-600">Contact</a>
     </div>
   </header>
@@ -476,8 +519,6 @@
       <div class="container mx-auto">
         <h2 class="text-3xl font-bold text-gray-800 mb-12">Our Services</h2>
         <div class="flex flex-wrap justify-center gap-8">
-
-
 
           <!-- Service Card 1: Land Geo Tagging -->
           <div class="service-card">
@@ -924,11 +965,11 @@
 
     <!-- Download App Section -->
     <section id="download" class="py-10 bg-white text-center">
-      <div class="transform transition-transform duration-500 group-hover:scale-105 flex justify-center">
+      <div class="relative transform transition-transform duration-500 group-hover:scale-105 flex justify-center">
         <img src="./assets/mobile-download.jpg" alt="Mobile Download"
-          class="rounded-lg shadow-lg w-full max-w-[400px] h-auto mx-auto object-contain">
+          class="drop-bounce-animation rounded-lg shadow-lg w-full max-w-[400px] h-auto mx-auto object-contain">
       </div>
-      <div class="container mx-auto max-w-2xl">
+      <div class="container mx-auto max-w-2xl mt-6">
         <h2 class="text-3xl font-bold text-green mb-2">Download Sinagro Mobile App</h2>
         <p class="text-gray-700 mb-6">Experience the real farming</p>
         <a href="https://play.google.com/store/apps/details?id=com.sinagromobile" target="_blank"
@@ -936,6 +977,8 @@
           here to Download</a>
       </div>
     </section>
+
+
 
     <!-- Subscribe Section -->
     <section id="subscribe" class="py-10 bg-gray-100 text-center">
@@ -946,7 +989,8 @@
           <input type="email" placeholder="Email"
             class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none">
           <button
-            class="bg-green text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg transition-all duration-150">Join Us</button>
+            class="bg-green text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg transition-all duration-150">Join
+            Us</button>
         </div>
       </div>
     </section>
@@ -989,7 +1033,6 @@
       </div>
     </section>
 
-
   </main>
 
   <!-- Footer -->
@@ -998,6 +1041,8 @@
       <p class="text-center md:text-left mb-4 md:mb-0">&copy; 2024 Sinagro - All Rights Reserved.</p>
       <div class="flex justify-center md:justify-end gap-4">
         <!-- <a href="#services" class="hover:underline">Services</a> -->
+        <a href="refund-policy.html" target="_blank" class="hover:underline cursor-pointer">Refund Policy</a>
+        <a href="shipping-policy.html" target="_blank" class="hover:underline cursor-pointer">Shipping Policy</a>
         <a href="privacy-policy.html" target="_blank" class="hover:underline cursor-pointer">Privacy Policy</a>
         <a href="terms-conditions.html" target="_blank" class="hover:underline cursor-pointer">Terms and
           Conditions</a>
@@ -1030,6 +1075,33 @@
 
       window.addEventListener("scroll", revealCards);
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const downloadImage = document.getElementById("downloadImage");
+
+      // Observer callback function
+      function handleIntersection(entries, observer) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            downloadImage.classList.remove("hidden"); // Make image visible
+            downloadImage.classList.add("drop-bounce-animation"); // Trigger animation
+            observer.unobserve(entry.target); // Stop observing after animation
+          }
+        });
+      }
+
+      // Create an IntersectionObserver instance
+      const observer = new IntersectionObserver(handleIntersection, {
+        root: null, // Use the viewport
+        threshold: 0.5, // Trigger when 50% of the element is visible
+      });
+
+      // Start observing the image
+      observer.observe(downloadImage);
+    });
+
+
+
     // Toggle Mobile Menu
     const menuButton = document.getElementById("menuButton");
     const mobileNav = document.getElementById("mobileNav");
@@ -1110,7 +1182,7 @@
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop - sectionHeight / 3) {
+        if (window.scrollY >= sectionTop - sectionHeight / 5) {
           currentSection = section.getAttribute("id");
         }
       });
@@ -1130,7 +1202,7 @@
       const heroSection = document.getElementById("home");
 
       // Check if the scroll position has passed the hero section
-      if (window.scrollY > heroSection.offsetHeight - header.offsetHeight) {
+      if (window.scrollY >= heroSection.offsetHeight) {
         header.classList.add("shadow-md", "border-b", "border-gray-300");
       } else {
         header.classList.remove("shadow-md", "border-b", "border-gray-300");
